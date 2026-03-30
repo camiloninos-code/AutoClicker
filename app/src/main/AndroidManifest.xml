@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.autoclicker.app">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_ACCESSIBILITY" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AutoClicker">
+
+        <activity android:name=".MainActivity" android:exported="true"
+            android:launchMode="singleTop" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ScriptsActivity" android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- v4: sin portrait lock en PreviewActivity (soporte landscape) -->
+        <activity android:name=".PreviewActivity" android:exported="false"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+
+        <!-- Motor de clics (AccessibilityService) -->
+        <service android:name=".AutoClickService" android:exported="true"
+            android:label="@string/accessibility_service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <service android:name=".FloatingOverlayService" android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+
+        <service android:name=".CaptureOverlayService" android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+
+        <service android:name=".PointsOverlayService" android:exported="false" />
+
+        <!-- v4: Grabador en tiempo real -->
+        <service android:name=".RecorderOverlayService" android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+
+        <!-- Widget (v3) -->
+        <receiver android:name=".AutoClickerWidget" android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
+
+        <receiver android:name=".WidgetCommandReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="com.autoclicker.app.WIDGET_START" />
+                <action android:name="com.autoclicker.app.WIDGET_STOP" />
+            </intent-filter>
+        </receiver>
+
+        <!-- v4: FileProvider para exportar scripts -->
+        <provider android:name="androidx.core.content.FileProvider"
+            android:authorities="com.autoclicker.app.fileprovider"
+            android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
+
+    </application>
+</manifest>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/bg_card"
+    android:padding="12dp"
+    android:layout_marginBottom="6dp">
+
+    <ImageView
+        android:layout_width="20dp" android:layout_height="20dp"
+        android:src="@android:drawable/ic_menu_sort_by_size"
+        android:alpha="0.4"
+        android:layout_marginEnd="10dp" />
+
+    <LinearLayout
+        android:layout_width="0dp" android:layout_height="wrap_content"
+        android:layout_weight="1" android:orientation="vertical">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical">
+            <TextView android:id="@+id/tvPointLabel"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14sp" android:textStyle="bold"
+                android:textColor="@color/text_primary" />
+            <!-- Badge de tipo: CLIC o SWIPE (v3) -->
+            <TextView android:id="@+id/tvPointType"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="● CLIC"
+                android:textSize="10sp" android:textStyle="bold"
+                android:textColor="@color/accent"
+                android:paddingStart="6dp" android:paddingEnd="6dp"
+                android:paddingTop="2dp" android:paddingBottom="2dp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginTop="2dp">
+            <TextView android:id="@+id/tvPointCoords"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textSize="12sp" android:textColor="@color/text_secondary"
+                android:fontFamily="monospace" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="  ·  " android:textColor="@color/text_secondary" android:textSize="12sp" />
+            <TextView android:id="@+id/tvPointDelay"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textSize="12sp" android:textColor="@color/accent" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageButton android:id="@+id/btnEditPoint"
+        android:layout_width="36dp" android:layout_height="36dp"
+        android:src="@android:drawable/ic_menu_edit"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="6dp" android:contentDescription="Editar punto" />
+
+    <ImageButton android:id="@+id/btnDeletePoint"
+        android:layout_width="36dp" android:layout_height="36dp"
+        android:src="@android:drawable/ic_menu_delete"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="6dp" android:contentDescription="Eliminar punto" />
+
+</LinearLayout>

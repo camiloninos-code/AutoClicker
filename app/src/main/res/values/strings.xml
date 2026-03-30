@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Auto Clicker</string>
+    <string name="accessibility_service_label">Auto Clicker Service</string>
+    <string name="accessibility_service_description">Permite simular toques automáticos en la pantalla para automatizar acciones repetitivas. No recopila datos personales.</string>
+    <string name="widget_description">Control rápido del Auto Clicker desde la pantalla de inicio</string>
+    <string name="recorder_notification_title">⏺ Grabando secuencia</string>
+    <string name="recorder_notification_text">Toca los puntos que quieres grabar. Pulsa Parar para terminar.</string>
+    <string name="stop_condition_not_supported">Condición de parada por pixel requiere Android 11+</string>
+</resources>

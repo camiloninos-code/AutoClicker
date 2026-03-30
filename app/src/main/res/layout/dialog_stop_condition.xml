@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="16dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Activar condición de parada"
+                android:textSize="14sp" android:textStyle="bold"/>
+            <Switch android:id="@+id/switchStopEnabled"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView android:id="@+id/tvStopApiWarning"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="⚠ Requiere Android 11+ (API 30). Puedes configurar el color manualmente."
+            android:textSize="12sp" android:textColor="#E65100"
+            android:background="#1AE65100" android:padding="8dp"
+            android:layout_marginBottom="12dp" android:visibility="gone"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Coordenadas del pixel" android:textSize="12sp" android:textColor="#888888"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="14dp" android:layout_marginTop="4dp">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="X" android:textSize="11sp" android:textColor="#888888"/>
+                <EditText android:id="@+id/etStopPixelX"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="number" android:hint="500" android:gravity="center"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Y" android:textSize="11sp" android:textColor="#888888"/>
+                <EditText android:id="@+id/etStopPixelY"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="number" android:hint="500" android:gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Color objetivo" android:textSize="12sp" android:textColor="#888888"
+            android:layout_marginBottom="6dp"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+            <View android:id="@+id/vStopColorPreview"
+                android:layout_width="48dp" android:layout_height="48dp"
+                android:background="#FFFFFFFF" android:layout_marginEnd="12dp"/>
+            <TextView android:id="@+id/tvStopColorHex"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="#FFFFFF"
+                android:textSize="16sp" android:fontFamily="monospace"/>
+            <Button android:id="@+id/btnCaptureColor"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="📷 Capturar" android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="14dp">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Tolerancia de color (0–255)" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="0 = exacto · 15 = recomendado"
+                    android:textSize="11sp" android:textColor="#888888"/>
+            </LinearLayout>
+            <EditText android:id="@+id/etStopTolerance"
+                android:layout_width="70dp" android:layout_height="wrap_content"
+                android:inputType="number" android:hint="15" android:gravity="center"/>
+        </LinearLayout>
+
+        <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/rbStopWhenMatches"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Parar cuando el pixel COINCIDE con el color" android:checked="true"/>
+            <RadioButton android:id="@+id/rbStopWhenNotMatches"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Parar cuando el pixel DEJA DE COINCIDIR"/>
+        </RadioGroup>
+    </LinearLayout>
+</ScrollView>

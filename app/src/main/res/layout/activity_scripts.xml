@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No tienes scripts guardados.\nToca '+ Nuevo Script' para empezar."
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:paddingTop="40dp"
+        android:paddingBottom="24dp"
+        android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvScripts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/btnNewScript"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="+ Nuevo Script"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/bg_button_primary"
+        android:layout_marginTop="12dp"/>
+
+</LinearLayout>

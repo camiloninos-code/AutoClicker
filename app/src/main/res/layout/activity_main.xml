@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/tvScriptName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mi Script"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:paddingBottom="4dp"
+            android:drawableEnd="@android:drawable/ic_menu_edit" />
+
+        <!-- Estado del servicio de accesibilidad -->
+        <TextView
+            android:id="@+id/tvServiceStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Verificando servicio..."
+            android:textSize="13sp"
+            android:paddingTop="4dp"
+            android:paddingBottom="12dp" />
+
+        <!-- Separador -->
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="@color/divider" android:layout_marginBottom="12dp"/>
+
+        <!-- Sección: Configuración del script -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CONFIGURACIÓN"
+            android:textSize="11sp"
+            android:letterSpacing="0.1"
+            android:textColor="@color/text_secondary"
+            android:paddingBottom="8dp" />
+
+        <!-- Delay global -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Delay entre clics (ms)"
+                android:textColor="@color/text_primary" android:textSize="14sp"/>
+            <EditText
+                android:id="@+id/etDelay"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="100"
+                android:gravity="center"
+                android:background="@drawable/bg_input"
+                android:padding="8dp" />
+        </LinearLayout>
+
+        <!-- Ciclos -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Número de ciclos"
+                android:textColor="@color/text_primary" android:textSize="14sp"/>
+            <EditText
+                android:id="@+id/etCycles"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="10"
+                android:gravity="center"
+                android:background="@drawable/bg_input"
+                android:padding="8dp" />
+        </LinearLayout>
+
+        <!-- Switch infinito -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="Ciclos infinitos"
+                android:textColor="@color/text_primary" android:textSize="14sp"/>
+            <Switch android:id="@+id/switchInfinite"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Switch randomize -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Humanizar clics (±20%)"
+                    android:textColor="@color/text_primary" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Varía el delay para evitar detección"
+                    android:textColor="@color/text_secondary" android:textSize="11sp"/>
+            </LinearLayout>
+            <Switch android:id="@+id/switchRandomize"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Separador -->
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="@color/divider" android:layout_marginBottom="12dp"/>
+
+        <!-- Sección: Puntos de clic -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+            <TextView
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="PUNTOS DE CLIC"
+                android:textSize="11sp" android:letterSpacing="0.1"
+                android:textColor="@color/text_secondary"/>
+            <Button
+                android:id="@+id/btnAddPoint"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="+ Agregar punto"
+                android:textSize="12sp"
+                android:background="@drawable/bg_button_secondary"
+                android:paddingStart="12dp" android:paddingEnd="12dp"
+                android:textColor="@color/accent" />
+        </LinearLayout>
+
+        <!-- Lista de puntos -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPoints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false" />
+
+        <!-- Placeholder si no hay puntos -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Sin puntos aún — toca '+ Agregar punto'"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:id="@+id/tvEmptyPoints" />
+
+        <!-- Contador de ciclos (visible durante ejecución) -->
+        <TextView
+            android:id="@+id/tvCycleCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="14sp"
+            android:textColor="@color/accent"
+            android:gravity="center"
+            android:paddingTop="8dp" />
+
+        <!-- Botón principal INICIAR / DETENER -->
+        <Button
+            android:id="@+id/btnStartStop"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="▶  Iniciar"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_button_primary"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+</ScrollView>

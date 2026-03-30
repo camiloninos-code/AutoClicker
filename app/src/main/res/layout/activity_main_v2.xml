@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="16dp">
+
+        <!-- Estado -->
+        <TextView android:id="@+id/tvStatus"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="⏹ Detenido" android:textSize="18sp" android:textStyle="bold"
+            android:textColor="@color/text_primary" android:gravity="center"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView android:id="@+id/tvCountdown"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="" android:textSize="22sp" android:textColor="#FF6F00"
+            android:gravity="center" android:visibility="gone"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Parámetros -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="8dp">
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:layout_marginEnd="8dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Repeticiones (0=∞)" android:textSize="11sp" android:textColor="@color/text_secondary"/>
+                <EditText android:id="@+id/etRepeat"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="number" android:text="1"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Intervalo global (ms)" android:textSize="11sp" android:textColor="@color/text_secondary"/>
+                <EditText android:id="@+id/etInterval"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:inputType="number" android:text="1000"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Temporizador de inicio -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:layout_marginBottom="12dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Temporizador de inicio (seg)" android:textSize="11sp"
+                android:textColor="@color/text_secondary"/>
+            <EditText android:id="@+id/etStartDelay"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:inputType="number" android:hint="0 = sin espera"/>
+        </LinearLayout>
+
+        <!-- Botones Iniciar / Parar -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="12dp">
+            <Button android:id="@+id/btnStart"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="▶ Iniciar"
+                android:layout_marginEnd="8dp"/>
+            <Button android:id="@+id/btnStop"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="⏹ Parar"/>
+        </LinearLayout>
+
+        <!-- Captura: Clic / Multi / Swipe -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="AGREGAR PUNTOS" android:textSize="11sp" android:textColor="@color/text_secondary"
+            android:layout_marginBottom="4dp"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="4dp">
+            <Button android:id="@+id/btnAddClick"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="+ Clic" android:layout_marginEnd="6dp"/>
+            <Button android:id="@+id/btnAddMulti"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="+ Multi" android:layout_marginEnd="6dp"/>
+            <Button android:id="@+id/btnAddSwipe"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="⟹ Swipe"
+                android:backgroundTint="#E65100"/>
+        </LinearLayout>
+
+        <!-- Grabar / Vista previa -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="12dp">
+            <Button android:id="@+id/btnRecord"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="⏺ Grabar"
+                android:backgroundTint="#C62828"
+                android:layout_marginEnd="6dp"/>
+            <Button android:id="@+id/btnPreview"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="🗺 Vista previa"/>
+        </LinearLayout>
+
+        <!-- Condición parada / Scripts -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="12dp">
+            <Button android:id="@+id/btnStopCondition"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="🛑 Condición: OFF"
+                android:layout_marginEnd="6dp"/>
+            <Button android:id="@+id/btnScripts"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="💾 Scripts"/>
+        </LinearLayout>
+
+        <!-- Export / Import -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="16dp">
+            <Button android:id="@+id/btnExport"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="📤 Exportar"
+                android:layout_marginEnd="6dp"/>
+            <Button android:id="@+id/btnImport"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="📥 Importar"/>
+        </LinearLayout>
+
+        <!-- Lista de puntos -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="PUNTOS DEL SCRIPT" android:textSize="11sp"
+            android:textColor="@color/text_secondary" android:layout_marginBottom="4dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPoints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"/>
+
+    </LinearLayout>
+</ScrollView>
